@@ -45,6 +45,11 @@ input {
   outline: none;
 }
 
+h1, h2 {
+  all: unset;
+  display: block;
+}
+
 body {
   font-family: "Montserrat", system-ui, sans-serif;
   background: #FFFFFF;

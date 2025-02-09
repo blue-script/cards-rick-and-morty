@@ -3,6 +3,15 @@
   height: 100vh;
 }
 
+.hidden-h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
 .main__container {
   padding: 0 10px;
   max-width: 1616px;
@@ -14,4 +23,31 @@
   padding: 128px 0 67px;
   display: flex;
   justify-content: center;
+}
+
+.main__content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  padding-bottom: 128px;
+}
+
+@media (max-width: 768px) {
+  .main__search {
+    padding: 100px 0 40px;
+  }
+
+  .main__content {
+    padding-bottom: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main__search {
+    padding: 60px 0 20px;
+  }
+
+  .main__content {
+    padding-bottom: 60px;
+  }
 }

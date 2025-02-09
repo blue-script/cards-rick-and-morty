@@ -4,12 +4,12 @@ import cn from "classnames"
 import s from "./search-bar.module.css"
 
 type SearchBarProps = {
+  data: DataType | null
   setData: (data: DataType | null) => void
   setLoading: (value: boolean) => void
-  data: DataType | null
 }
 
-export const SearchBar = ({setData, setLoading, data}: SearchBarProps) => {
+export const SearchBar = ({data, setData, setLoading}: SearchBarProps) => {
   const [query, setQuery] = useState("")
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const SearchBar = ({setData, setLoading, data}: SearchBarProps) => {
       .then((data) => {
         setData(data)
       })
-      .catch((err) => console.error("Ошибка загрузки:", err))
+      .catch((err) => console.error("Loading error:", err))
       .finally(() => setLoading(false))
   }, [query])
 
