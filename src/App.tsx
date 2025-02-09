@@ -42,6 +42,7 @@ export type ItemLocation = {
 function App() {
   const [data, setData] = useState<DataType | null>(null)
   const [loading, setLoading] = useState(false)
+  console.log(loading)
 
   console.log(data)
 
@@ -52,7 +53,7 @@ function App() {
           <SearchBar setData={setData} setLoading={setLoading} data={data}/>
         </div>
         <div className={s["main__content"]}>
-
+          test
         </div>
       </div>
     </main>
