@@ -13,21 +13,25 @@ export const SearchBar = ({data, setData, setLoading}: SearchBarProps) => {
   const [query, setQuery] = useState("")
 
   useEffect(() => {
-    if (query.length < 4) {
-      setData(null)
-      return
-    }
+    const delay = setTimeout(() => {
+      if (query.length < 4) {
+        setData(null);
+        return;
+      }
 
-    setLoading(true)
+      setLoading(true);
 
-    fetch(`https://rickandmortyapi.com/api/character/?name=${query.toLowerCase()}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-      })
-      .catch((err) => console.error("Loading error:", err))
-      .finally(() => setLoading(false))
-  }, [query])
+      fetch(`https://rickandmortyapi.com/api/character/?name=${query.toLowerCase()}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setData(data);
+        })
+        .catch((err) => console.error("Loading error:", err))
+        .finally(() => setLoading(false));
+    }, 500);
+
+    return () => clearTimeout(delay);
+  }, [query]);
 
   return (
     <div className={s["search-bar"]}>

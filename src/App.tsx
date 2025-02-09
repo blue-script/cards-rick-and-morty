@@ -40,12 +40,9 @@ export type ItemLocation = {
   url: string;
 }
 
-function App() {
+const App = () => {
   const [data, setData] = useState<DataType | null>(null)
   const [loading, setLoading] = useState(false)
-  console.log(loading)
-
-  console.log(data)
 
   return (
     <main className={s["main"]}>
@@ -55,7 +52,10 @@ function App() {
           <SearchBar setData={setData} setLoading={setLoading} data={data}/>
         </div>
         <div className={s["main__content"]}>
-          {data?.results?.map(item => (<Card key={item.id} dataItem={item} />))}
+          {loading
+            ? <div className={s["main__loading"]}>Loading...</div>
+            : data?.results?.map(item => (<Card key={item.id} dataItem={item}/>))
+          }
         </div>
       </div>
     </main>
